@@ -8,18 +8,23 @@ import random
 
 class Application(tk.Tk):
     name = basename(splitext(basename(__file__.capitalize()))[0])
-    name = "Foo"
+    name = "matematikovací věda"
 
     def __init__(self):
         super().__init__(className=self.name)
         self.title(self.name)
         self.bind("<Escape>", self.quit)
-        self.lbl = tk.Label(self, text="Hello World")
+        self.frame = tk.Frame(self, highlightbackground="#000000")
+        self.frame.pack(padx=50, pady=25)
+        self.lbl = tk.Label(self.frame, text="Ahoj kamosu")
         self.lbl.pack()
+        self.entry = tk.Entry(self.frame)
+        self.entry.pack()
+        self.btn2 = tk.Button(self, text="Pokracovat", command=self.generovani)
+        self.btn2.pack()
         self.btn = tk.Button(self, text="Quit", command=self.quit)
         self.btn.pack()
-        self.btn2 = tk.Button(self, text="Novy priklad", command=self.generovani)
-        self.btn2.pack()
+
 
     def plus(self):
         self.cisloA = random.randint(1, 100)
